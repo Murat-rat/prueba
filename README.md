@@ -11,9 +11,9 @@
 
 | Nombre Completo | Rol / Tareas Principales | Usuario GitHub |
 | :--- | :--- | :--- |
-| Murat Castro Álvarez | Diseño de la UI, Creación del Repo, Login y registro | @Murat-rat |
-| Leonardo Díaz Espinosa | Pantalla principal, Pantalla de sesión en curso, Cards | @LeonardoDiazz |
-| Shanny Odeth Ramos Santiesteban | Configuración del sensor, Retrofit, Base de Datos, Pruebas | @ShannyRamos17 |
+| Murat Castro Álvarez | Diseño de la UI, Creación del Repo, Login y registro | [@Murat-rat](https://github.com/Murat-rat) |
+| Leonardo Díaz Espinosa | Pantalla principal, Pantalla de sesión en curso, Cards | [@LeonardoDiazz](https://github.com/LeonardoDiazz) |
+| Shanny Odeth Ramos Santiesteban | Configuración del sensor, Retrofit, Base de Datos, Pruebas | [@ShannyRamos17](https://github.com/ShannyRamos17) |
 
 ---
 
@@ -21,6 +21,8 @@
 
 **¿Qué hace la aplicación?**
 La aplicación es un podómetro simple que permite registrase e iniciar sesión para poder registrar nuestras sesiones de actividad física al caminar o correr.
+
+La aplicación utiliza el acelerometro de los dispositivo para registrar los pasos del usuario y de esa manera calcular la distancia que recorre un usario.
 
 En la pantalla principal la aplicación muestra tarjetas en las que se puede ver la información de los registros de actividad física, muestra los siguientes datos:
 - Nombre de usuario
@@ -32,11 +34,11 @@ En la pantalla principal la aplicación muestra tarjetas en las que se puede ver
 Se puede dar click a las tarjetas para reanudar una sesión, manteniendo los datos que ya tenía almacenada la sesión y añadiendo a ellos. Cada tarjeta también
 tiene un botón que permite eliminar el registro de la base de datos.
 
-La aplicación busca ser una solución simple para personas que disfrutan salir a caminar o correr de manera casual, pero que a la vez les gustaría tener un
-registro de su actividad.
+La aplicación utiliza los servicios de la página mockapi.io para simular la api permitir que los servicios de la app estén disponibles todo el tiempo.
 
 **Objetivo:**
-Demostrar la implementación de una arquitectura robusta en Android utilizando servicios web y hardware del dispositivo.
+La aplicación busca ser una solución simple para personas que disfrutan salir a caminar o correr de manera casual, pero que a la vez les gustaría tener un
+registro de su actividad.
 
 ---
 
@@ -48,12 +50,13 @@ Este proyecto ha sido desarrollado siguiendo estrictamente los lineamientos de l
 * **Interfaz de Usuario:** Jetpack Compose.
 * **Arquitectura:** MVVM (Model-View-ViewModel).
 * **Conectividad (API REST):** Retrofit.
-    * **GET:** [Explica brevemente qué datos obtienes]
-    * **POST:** [Explica qué datos envías/creas]
-    * **UPDATE:** [Explica qué se actualiza]
-    * **DELETE:** [Explica qué se borra]
-* **Sensor Integrado:** [Menciona aquí el sensor usado: Ej. Cámara, GPS, Giroscopio]
-    * *Uso:* [Explica brevemente para qué se usa el sensor en la app]
+    * **GET:** Obtiene y le muestra al usuario tarjetas con los detalles de su actividad física.
+    * **POST:** Crea un objeto RunItem que registra el usuario, tiempo, distancia, velocidad y fecha del registro.
+    * **UPDATE:** Obtiene los datos de un registro y luego reanuda la sesión para modificar los datos mencinados anteriormente.
+    * **DELETE:** Elimina los datos de una sesión de actividad del usuario.
+* **Sensor Integrado:** La aplicación hace uso del acelerometro.
+    * *Uso:* El acelerometro se usa para detectar los pasos del usuario y añadir a la ditancia por cada paso que registre el sisitema. Para esto
+    * realiza una resta entre cada velocidad que registra el acelerometro y la diferencia es mayor a cierto número registra un paso.
 
 ---
 
